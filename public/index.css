@@ -1,0 +1,107 @@
+body{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+
+.app{
+  width: 100%;
+  height: 100vh;
+  background-image: url('./image/.bg-1.jpg');
+  background-position: center;
+  background-size: cover;
+  background-position: top;
+  
+}
+
+main{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+
+
+.search-box{
+  grid-row: 1/2;
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
+
+}
+
+.search-box input{
+  width: 30%;
+  height: 5vh;
+
+}
+
+input{
+  background-color: rgba(44, 44, 44, 0.2);
+  color: white;
+  outline: none;
+  font-size: large;
+  border: 4px solid white;
+  border-radius: 4px;
+  box-shadow: 1px 1px 2px rgb(214, 214, 214,.8);
+  font-weight: 600;
+  padding-left: 2em;
+}
+
+::placeholder {
+  color:white;
+
+ 
+}
+
+
+
+.location-weather{
+  grid-row: 2/3;
+  display: grid;
+  grid-template-columns: 20em 1fr 3em 1fr 10em;
+  color: white;
+}
+
+.current-weather{
+  grid-column: 2/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
+  width: 80%;
+  height: 55%;
+  border: 1px solid rgb(214, 214, 214);
+  border-radius: 5px;
+  background-color: rgba(250, 236, 236, 0.2);
+
+}
+
+.three-days-forcast{
+  grid-column: 4/5;
+  border-radius: 5px;
+  background-color: rgba(250, 236, 236, 0.2);  width: 80%;
+  height: 55%;
+
+}
+
+.three-days-forcast p{
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;}
+
+
+
+.days{
+  display: flex;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+
+
