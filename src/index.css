@@ -7,7 +7,7 @@ body{
   padding: 0px;
   box-sizing: border-box;
   width: 100%;
-  height: 110vh;
+  height: 100vh;
 
 ;}
 
@@ -163,7 +163,7 @@ input{
   justify-content: right;
   align-items: center;
   width: 80%;
-  height: 67%;
+  height: 77%;
   border: 1px solid rgb(214, 214, 214);
   border-radius: 5px;
   background-color: rgba(182, 181, 181, 0.2);
@@ -193,7 +193,7 @@ input{
   border-radius: 5px;
   background-color: rgba(197, 197, 197, 0.2);
   width: 100%;
-  height: 67%;
+  height: 77%;
 }
 
 .three-days-forcast p{
