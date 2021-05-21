@@ -231,7 +231,7 @@ input{
 @media(max-width:1050px){
 
   .app{
-    height: 140vh;
+    height: 150vh;
   }
   
 
@@ -270,8 +270,9 @@ input{
 @media(max-width:540px){
 
   .app{
-    height: 190vh;
+    height: 225vh;
   }
+
   .as{
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -280,7 +281,12 @@ input{
 
   .search-box{grid-row: 1/2;}
 
-  .celsius-ferhnite{grid-row: 2/3;}
+  .search-box input{
+    padding-left: 1em;
+  }
+
+  .celsius-ferhnite{grid-row: 2/3;
+                    margin-top: 1em;}
 
   .days{
     

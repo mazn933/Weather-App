@@ -1,12 +1,9 @@
 import React, {useState,useEffect} from 'react';
 import {VscLoading} from  'react-icons/vsc';
-import {RiCelsiusFill} from 'react-icons/ri';
 import {RiFahrenheitFill} from 'react-icons/ri';
-import{BsSearch} from 'react-icons/bs'
-
-
-
-
+import{BsSearch} from 'react-icons/bs';
+import Forcast from './components/Forecast';
+import Current from './components/Current';
 
 
 const App = () => {
@@ -27,12 +24,13 @@ const fetchApi=async()=>{
      if(weatherDt.error){setQuery('london'); return(
       <div></div>
      )};
+     
      setData(weatherDt);
+     console.log(weatherDt)
      seterror(true);
      setQuery('')
   }
 
-const apiKey='3f4eb15ee2282f3f96cb78628ee0ab96';
 
  useEffect(()=>{
    fetchApi()
@@ -42,12 +40,6 @@ const apiKey='3f4eb15ee2282f3f96cb78628ee0ab96';
   const Searching=(e)=>{
     fetchApi()
 
-  }
-
-  const changeDate=(date)=>{
-    let b=new Date(date).getDay();
-    const weekDays=['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    return weekDays[b]
   }
 
   const showingF=()=>{
@@ -69,7 +61,7 @@ const apiKey='3f4eb15ee2282f3f96cb78628ee0ab96';
   return (
     
     <div className='app'>
-        <main>
+      <main>
 
           <div className='as'>
             <div className='search-box'>
@@ -86,46 +78,11 @@ const apiKey='3f4eb15ee2282f3f96cb78628ee0ab96';
           </div>
     
           <div className='location-weather'>
-            <div className='current-weather'>
-              <h2 className='name-of-city'>{data.location.name}</h2>
-              <div className='current-weather-details'>
-                 <h2 className='today'>Today</h2>
-                 <h1 className={!show?'f':'c'}>{Math.round(data.current.feelslike_c)} <span className='degree-c'><RiCelsiusFill/></span></h1>
-                 <h1 className={show?'f':'c'}>{Math.round(data.current.feelslike_f)} <span className='degree-f'><RiFahrenheitFill/></span></h1>
-                 <p className='current-weather-text'>{data.current.condition.text}</p>
-                 <img src={data.current.condition.icon} alt="current-weather" className='icons'/>
-              </div>
-              
-            </div>
-          
-              <div className='three-days-forcast'>
-                  <p>Next three days forcast</p>
-                <div className='days'>
-                  <div className='first-day'>
-                    <h2 className='today'>{changeDate(data.forecast.forecastday[0].date)}</h2>
-                    <h2 className={!show?'f':''}>{Math.round(data.forecast.forecastday[0].day.avgtemp_c)}<span className='degree-c'><RiCelsiusFill/></span></h2>
-                    <h2 className={show?'f':''}>{Math.round(data.forecast.forecastday[0].day.avgtemp_f)}<span className='degree-f'><RiFahrenheitFill/></span></h2>
-                    <img src={data.forecast.forecastday[0].day.condition.icon} alt="foracast-icon" className='icons'/>
-                    <h4 className='forecast-weather-text'>{data.forecast.forecastday[0].day.condition.text}</h4>
-                  </div>
-                  <div className='second-day'> 
-                    <h2 className='today'>{changeDate(data.forecast.forecastday[1].date)}</h2>
-                    <h2 className={!show?'f':''}>{Math.round(data.forecast.forecastday[1].day.avgtemp_c)} <span className='degree-c'><RiCelsiusFill/></span></h2>
-                    <h2 className={show?'f':''}>{Math.round(data.forecast.forecastday[1].day.avgtemp_f)} <span className='degree-f'><RiFahrenheitFill/></span></h2>
-                    <img src={data.forecast.forecastday[1].day.condition.icon} alt="foracast-icon" className='icons'/>
-                    <h4 className='forecast-weather-text'>{data.forecast.forecastday[1].day.condition.text}</h4>
-                  </div>
-                   <div className='third-day'>
-                      <h2 className='today'>{changeDate(data.forecast.forecastday[2].date)}</h2>
-                      <h2 className={!show?'f':''}>{Math.round(data.forecast.forecastday[2].day.avgtemp_c)} <span className='degree-c'><RiCelsiusFill/></span></h2>
-                      <h2 className={show?'f':''}>{Math.round(data.forecast.forecastday[2].day.avgtemp_f)} <span className='degree-f'><RiFahrenheitFill/></span></h2>
-                      <img src={data.forecast.forecastday[2].day.condition.icon} alt="foracast-icon" className='icons'/>
-                      <h4 className='forecast-weather-text'>{data.forecast.forecastday[2].day.condition.text}</h4>
-                   </div>
 
-                </div>
-                 
-              </div>
+            <Current  data={data} show={show}/>
+    
+             <Forcast data={data} show={show}/>
+
            </div>
        </main>
     </div>
